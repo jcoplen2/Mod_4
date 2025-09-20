@@ -22,6 +22,8 @@ else:
     print("Invalid choice.")
     raise SystemExit
 
+print("Input received.")
+
 #hash data using SHA256
 orig_hash = hashlib.sha256(data).hexdigest()
 
@@ -31,9 +33,11 @@ key = Fernet.generate_key()
 fernet = Fernet(key)
 
 #use fernet to encrypt message
+print("Encrypting.")
 encMessage = fernet.encrypt(data)
 
 #decrypt message
+print("Decrypting.")
 decMessage = fernet.decrypt(encMessage)
 dec_hash = hashlib.sha256(decMessage).hexdigest()
 
